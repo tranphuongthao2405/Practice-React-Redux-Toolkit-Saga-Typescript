@@ -6,6 +6,7 @@ import TodoList from "./components/TodoList/index";
 import TodoForm from "./components/TodoForm/index";
 import PostList from "./components/PostList";
 import Pagination from "./components/Pagination";
+import PostFiltersForm from "./components/PostFiltersForm";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -23,12 +24,14 @@ function App() {
   const [filters, setFilters] = useState({
     _limit: 10,
     _page: 1,
+    title_like: "",
   });
 
   useEffect(() => {
     // async function here
     const fetchPostList = async () => {
       try {
+        // encode thanh querystring trong url
         const paramsString = queryString.stringify(filters);
         const requestUrl = `http://js-post-api.herokuapp.com/api/posts?${paramsString}`;
 
@@ -71,13 +74,20 @@ function App() {
     setFilters({ ...filters, _page: newPage });
   };
 
+  const handleFiltersChange = (newFilter) => {
+    // reset ve trang 1
+    // do thay doi filter
+    // filter search co the khong tra ve nhieu du lieu de du nhieu hon 1 trang
+    setFilters({ ...filters, _page: 1, title_like: newFilter.searchTerm });
+  };
+
   return (
     <div className="App">
       {/* <ColorBox /> */}
       {/* <TodoList todos={todoList} onTodoClick={handleTodoClick} />
       <br />
       <TodoForm onSubmit={handleTodoFormSubmit} /> */}
-
+      <PostFiltersForm onSubmit={handleFiltersChange} />
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
     </div>
