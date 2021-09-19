@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
+import "./index.css";
 
 PostFiltersForm.propTypes = {
   onSubmit: PropTypes.func,
@@ -25,7 +26,7 @@ function PostFiltersForm(props) {
     }
 
     // doi 300ms moi goi onSubmit
-    // neu duoc 100ms da tiep tuc trigger ham handle 
+    // neu duoc 100ms da tiep tuc trigger ham handle
     // thi se thay gia tri ref co ton tai, phai clear timeout truoc do
     // sau do moi duoc set timeout moi o thoi diem hien tai
     typingTimeoutRef.current = setTimeout(() => {
