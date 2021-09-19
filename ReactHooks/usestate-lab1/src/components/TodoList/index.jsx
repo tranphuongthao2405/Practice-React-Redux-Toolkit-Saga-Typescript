@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./TodoList.css";
+import "./index.css";
 
 TodoList.propTypes = {
   todos: PropTypes.array,

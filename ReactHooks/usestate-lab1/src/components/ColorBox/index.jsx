@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ColorBox.css";
+import "./index.css";
 
 // ham doc lap voi component nen viet ra ngoai
 // neu project lon hon co the tach ra thanh utils
